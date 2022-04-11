@@ -49,6 +49,16 @@ export class AppComponent implements OnInit{
   }
 
   public onAddStudent(addForm: NgForm):void {
-
+    // @ts-ignore
+    document.getElementById('add-student-form').click();
+  this.studentService.addStudents(addForm.value).subscribe(
+    (response: Student)=>{
+      console.log(response);
+      this.getStudents();
+    },
+    (error: HttpErrorResponse)=>{
+      alert(error.message);
+    }
+  );
   }
 }
