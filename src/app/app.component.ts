@@ -13,6 +13,7 @@ import {NgForm} from "@angular/forms";
 export class AppComponent implements OnInit{
   title = 'StudentManagmentFE';
   public students: Student[] | undefined;
+  public updateStudent: Student | undefined;
   constructor(private studentService: StudentService){}
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit{
       btn.setAttribute('data-target','#addStudentModal');
     }
     if(mode === 'change'){
+      this.updateStudent = student;
       btn.setAttribute('data-target','#changeStudentModal');
     }
     if(mode === 'delete'){
@@ -60,5 +62,17 @@ export class AppComponent implements OnInit{
       alert(error.message);
     }
   );
+  }
+
+  public onUpdateStudent(student: Student):void {
+    this.studentService.changeStudents(student).subscribe(
+      (response: Student)=>{
+        console.log(response);
+        this.getStudents();
+      },
+      (error: HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    );
   }
 }

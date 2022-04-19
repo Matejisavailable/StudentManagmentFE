@@ -30,7 +30,7 @@
             </div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">xxxxx@gmail.com</a></li>
+            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{student.mail}}</a></li>
             <li class="list-group-item">Fakulta</li>
             <li class="list-group-item">Katedra</li>
             <li class="list-group-item">Odbor {{student?.odbor}} </li>
@@ -94,25 +94,25 @@
             <form #editForm="ngForm">
               <div class="form-group">
                 <label for="meno">Name</label>
-                <input type="text" ngModel="" name="meno" class="form-control" id="menoChange" aria-describedby="emailHelp" placeholder="Name">
+                <input type="text" ngModel="{{updateStudent?.meno}}" name="meno" class="form-control" id="menoChange" aria-describedby="emailHelp" placeholder="Name">
               </div>
               <div class="form-group">
                 <label for="priezvisko">Surname</label>
-                <input type="text" ngModel="" name="priezvisko" class="form-control" id="priezviskoChange" aria-describedby="emailHelp" placeholder="Surname">
+                <input type="text" ngModel="{{updateStudent?.priezvisko}}" name="priezvisko" class="form-control" id="priezviskoChange" aria-describedby="emailHelp" placeholder="Surname">
               </div>
-              <input type="hidden" ngModel="" name="id" class="form-control" id="id" placeholder="Email">
-              <input type="hidden" ngModel="" name="userCode" class="form-control" id="userCode" placeholder="Email">
+              <input type="hidden" ngModel="{{updateStudent?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+              <input type="hidden" ngModel="{{updateStudent?.mesto}}" name="mesto" class="form-control" id="mesto" placeholder="Email">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" ngModel="" name="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" ngModel="{{updateStudent?.mail}}" name="email" class="form-control" id="email" placeholder="Email">
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <label for="odbor">Field of study</label>
-                <input type="text" ngModel="" name="odbor" class="form-control" id="odborChange"  placeholder="Field of Study">
-              </div>
+                <input type="text" ngModel="{{updateStudent?.odbor}}" name="odbor" class="form-control" id="odborChange"  placeholder="Field of Study">
+              </div>-->
               <div class="modal-footer">
                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                <button  data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                <button (click)="onUpdateStudent(editForm.value)"  data-dismiss="modal" class="btn btn-primary" >Save changes</button>
               </div>
             </form>
           </div>
