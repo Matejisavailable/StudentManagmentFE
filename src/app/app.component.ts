@@ -97,10 +97,7 @@ export class AppComponent implements OnInit{
   public search(search: string):void{
     const res: Student[] = [];
     for(const student of this.students){
-        if(student.meno.toLowerCase().indexOf(search.toLowerCase())!==-1
-          || student.priezvisko.toLowerCase().indexOf(search.toLowerCase())!==-1
-          || student.mail.toLowerCase().indexOf(search.toLowerCase())!==-1
-        ){
+        if(student.meno.toLowerCase().indexOf(search.toLowerCase())!==-1 || student.priezvisko.toLowerCase().indexOf(search.toLowerCase())!==-1){
           res.push(student);
         }
     }
