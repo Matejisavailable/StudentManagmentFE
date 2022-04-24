@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler/src/util";
 import {NgForm} from "@angular/forms";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +13,11 @@ import {NgForm} from "@angular/forms";
 })
 export class AppComponent implements OnInit{
   title = 'StudentManagmentFE';
-  public students: Student[] | undefined;
+  public students: Student[] = [];
   public updateStudent: Student | undefined;
-  constructor(private studentService: StudentService){}
+  public deleteStudent: Student | undefined;
+  constructor(private studentService: StudentService){
+  }
 
   ngOnInit() {
     this.getStudents();
@@ -28,6 +31,7 @@ export class AppComponent implements OnInit{
       (error:HttpErrorResponse)=>
       alert(error.message));
   }
+
   public onOpenModal( mode: string,student?: Student):void{
     const container = document.getElementById('main')
     const btn = document.createElement('button');
@@ -42,6 +46,7 @@ export class AppComponent implements OnInit{
       btn.setAttribute('data-target','#changeStudentModal');
     }
     if(mode === 'delete'){
+      this.deleteStudent = student;
       btn.setAttribute('data-target','#deleteStudentModal');
     }
 
@@ -51,6 +56,7 @@ export class AppComponent implements OnInit{
   }
 
   public onAddStudent(addForm: NgForm):void {
+
     // @ts-ignore
     document.getElementById('add-student-form').click();
   this.studentService.addStudents(addForm.value).subscribe(
@@ -74,5 +80,33 @@ export class AppComponent implements OnInit{
         alert(error.message);
       }
     );
+  }
+
+
+  public onDeleteStudent(studentId: number):void {
+    this.studentService.deleteStudents(studentId).subscribe(
+      (response: void)=>{
+        console.log(response);
+        this.getStudents();
+      },
+      (error: HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    );
+  }
+  public search(search: string):void{
+    const res: Student[] = [];
+    for(const student of this.students){
+        if(student.meno.toLowerCase().indexOf(search.toLowerCase())!==-1
+          || student.priezvisko.toLowerCase().indexOf(search.toLowerCase())!==-1
+          || student.mail.toLowerCase().indexOf(search.toLowerCase())!==-1
+        ){
+          res.push(student);
+        }
+    }
+    this.students = res;
+    if(res.length === 0 || !res){
+      this.getStudents();
+    }
   }
 }
