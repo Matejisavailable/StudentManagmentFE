@@ -4,6 +4,9 @@ import {StudentService} from "./student.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler/src/util";
 import {NgForm} from "@angular/forms";
+import {Odbor} from "./odbor";
+import {Fakulta} from "./fakulta";
+import {Katedra} from "./katedra";
 
 
 @Component({
@@ -14,6 +17,9 @@ import {NgForm} from "@angular/forms";
 export class AppComponent implements OnInit{
   title = 'StudentManagmentFE';
   public students: Student[] = [];
+  public odbory: Odbor[] = [];
+  public fakulty: Fakulta[] = [];
+  public katedry: Katedra[] = [];
   public updateStudent: Student | undefined;
   public deleteStudent: Student | undefined;
   constructor(private studentService: StudentService){
@@ -31,6 +37,34 @@ export class AppComponent implements OnInit{
       (error:HttpErrorResponse)=>
       alert(error.message));
   }
+
+  public getOdbory():void{
+    this.odboryService.getOdbory().subscribe(
+      (restponse: Odbor[]) => {
+        this.odbory = restponse;
+      },
+      (error:HttpErrorResponse)=>
+        alert(error.message));
+  }
+
+  public getKatedry():void{
+    this.katedraService.getKatedry().subscribe(
+      (restponse: Katedra[]) => {
+        this.katedry = restponse;
+      },
+      (error:HttpErrorResponse)=>
+        alert(error.message));
+  }
+
+  public getFakulty():void{
+    this.fakultaService.getFakulty().subscribe(
+      (restponse: Fakulta[]) => {
+        this.fakulty = restponse;
+      },
+      (error:HttpErrorResponse)=>
+        alert(error.message));
+  }
+
 
   public onOpenModal( mode: string,student?: Student):void{
     const container = document.getElementById('main')
@@ -81,8 +115,6 @@ export class AppComponent implements OnInit{
       }
     );
   }
-
-
   public onDeleteStudent(studentId: number):void {
     this.studentService.deleteStudents(studentId).subscribe(
       (response: void)=>{
