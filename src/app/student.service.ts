@@ -16,8 +16,8 @@ export class StudentService {
   public addStudents(student:Student): Observable<Student> {
     return this.http.post<any>(`${this.API_URL}/student/add`,student);
   }
-  public changeStudents(student:Student): Observable<Student> {
-    return this.http.put<Student>(`${this.API_URL}/student/change`,student);
+  public changeStudents(studentId:number,student:Student): Observable<Student> {
+    return this.http.put<Student>(`${this.API_URL}/student/change/${studentId}`,student);
   }
   public deleteStudents(studentId:number): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}/student/delete/${studentId}`);
