@@ -1,7 +1,9 @@
+
 <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="col-lg-12">
+  <div class="col-1 float-lg-left" style="padding: 5px;font-family: Broadway "><a href="http://localhost:4200/" style="color: white">Student Manager</a></div>
+  <div class="col-lg-11">
     <div class="panel panel-default">
-      <div class="panel-body p-t-0" style="padding: 5px">
+      <div class="panel-body p-t-0" style="padding-top: 10px">
       <div class="col-2 float-lg-left"><a class="btn btn-custom waves-effect waves-light mb-4" data-animation="fadein" data-plugin="custommodal" data-overlayspeed="200" data-overlaycolor="#36404a" style="color: white" (click)="onOpenModal('add')"><i class="mdi mdi-plus"></i> Add Student</a></div>
         <form class="form-inline my-2 my-lg-0" style="float: right">
           <input type="search" (ngModelChange)="search(key.value)" #key="ngModel" ngModel
@@ -24,26 +26,26 @@
             </div>
             <div class="col-lg-12 card-title align-self-center ">
               <h5>{{student?.meno}} {{student?.priezvisko}}</h5>
-              <p class="m-0">{{student?.odbor}} {{student?.fakultanaz}} {{student?.katedranaz}}</p>
+              <p class="m-0"> ID NUMBER of student: <b>{{student?.id}}</b></p>
             </div>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{student.mail}}</a></li>
-            <li class="list-group-item">Fakulta {{student?.fakultanaz}}</li>
-            <li class="list-group-item">Katedra{{student?.katedranaz}}</li>
-            <li class="list-group-item">Odbor {{student?.odbor}} </li>
+            <li class="list-group-item">Faculty: <b>{{student?.fakultanaz}}</b></li>
+            <li class="list-group-item">Department: <b>{{student?.katedranaz}}</b></li>
+            <li class="list-group-item">Field of study: <b>{{student?.odbor}}</b> </li>
+            <li class="list-group-item">Year: <b>{{student?.rocnik}}</b> </li>
+            <li class="list-group-item">City: <b>{{student?.mesto}}</b> </li>
           </ul>
           <div class="card-body">
             <div class="float-right btn-group btn-group-sm">
               <a (click)="onOpenModal('change',student)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal('delete',student)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+              <a (click)="onOpenModal('delete',student)" class="btn btn-secondary tooltips" style="background-color: indianred" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
 
     <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -68,10 +70,27 @@
                 <label for="odbor">Field of study</label>
                 <input type="text" ngModel name="odbor" class="form-control" id="odbor" placeholder="Field of Study" required>
               </div>
+              <div class="form-group">
+                <label for="katedranaz">Department</label>
+                <input type="text" ngModel name="katedranaz" class="form-control" id="katedranaz" placeholder="Department" required>
+              </div>
+              <div class="form-group">
+                <label for="fakultanaz">Faculty</label>
+                <input type="text" ngModel name="fakultanaz" class="form-control" id="fakultanaz" placeholder="Faculty" required>
+              </div>
+              <div class="form-group">
+                <label for="rocnik">Year</label>
+                <input type="text" ngModel name="rocnik" class="form-control" id="rocnik" placeholder="Year" required>
+              </div>
+              <div class="form-group">
+                <label for="mesto">City</label>
+                <input type="text" ngModel name="mesto" class="form-control" id="mesto" placeholder="City" required>
+              </div>
               <div class="modal-footer">
                 <button type="button" id="add-student-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Add student</button>
               </div>
+
             </form>
           </div>
         </div>
@@ -99,15 +118,11 @@
                 <input type="text" ngModel="{{updateStudent?.priezvisko}}" name="priezvisko" class="form-control" id="priezviskoChange" aria-describedby="emailHelp" placeholder="Surname">
               </div>
               <input type="hidden" ngModel="{{updateStudent?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-              <input type="hidden" ngModel="{{updateStudent?.mesto}}" name="mesto" class="form-control" id="mesto" placeholder="Email">
+              <input type="hidden" ngModel="{{updateStudent?.mesto}}" name="mesto2" class="form-control" id="mesto2" placeholder="Email">
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" ngModel="{{updateStudent?.mail}}" name="email" class="form-control" id="email" placeholder="Email">
               </div>
-              <!--<div class="form-group">
-                <label for="odbor">Field of study</label>
-                <input type="text" ngModel="{{updateStudent?.odbor}}" name="odbor" class="form-control" id="odborChange"  placeholder="Field of Study">
-              </div>-->
               <div class="modal-footer">
                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
                 <button (click)="onUpdateStudent(editForm.value)"  data-dismiss="modal" class="btn btn-primary" >Save changes</button>

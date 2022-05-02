@@ -7,4 +7,5 @@ export interface Student{
   odbor: string;
   katedranaz: string;
   fakultanaz: string;
+  rocnik:string;
 }

@@ -107,7 +107,7 @@ export class AppComponent implements OnInit{
   );
   }
 
-  public onUpdateStudent(student: Student):void {
+  public onUpdateStudent(student:Student):void {
     this.studentService.changeStudents(student).subscribe(
       (response: Student)=>{
         console.log(response);
