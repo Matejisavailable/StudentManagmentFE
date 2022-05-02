@@ -7,7 +7,9 @@ import {NgForm} from "@angular/forms";
 import {Odbor} from "./odbor";
 import {Fakulta} from "./fakulta";
 import {Katedra} from "./katedra";
-
+import {FakultaService} from "./fakulta.service";
+import {KatedraService} from "./katedra.service";
+import {OdborService} from "./odbor.service";
 
 @Component({
   selector: 'app-root',
@@ -22,8 +24,9 @@ export class AppComponent implements OnInit{
   public katedry: Katedra[] = [];
   public updateStudent: Student | undefined;
   public deleteStudent: Student | undefined;
-  constructor(private studentService: StudentService){
+  constructor(private studentService: StudentService, private fakultaService: FakultaService, private katedraService: KatedraService, private odborService: OdborService){
   }
+
 
   ngOnInit() {
     this.getStudents();
@@ -39,7 +42,7 @@ export class AppComponent implements OnInit{
   }
 
   public getOdbory():void{
-    this.odboryService.getOdbory().subscribe(
+    this.odborService.getOdbory().subscribe(
       (restponse: Odbor[]) => {
         this.odbory = restponse;
       },

@@ -24,13 +24,13 @@
             </div>
             <div class="col-lg-12 card-title align-self-center ">
               <h5>{{student?.meno}} {{student?.priezvisko}}</h5>
-              <p class="m-0">{{student?.odbor}} {{katedry}} {{student?.fakulta}}</p>
+              <p class="m-0">{{student?.odbor}} {{student?.fakultanaz}} {{student?.katedranaz}}</p>
             </div>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{student.mail}}</a></li>
-            <li class="list-group-item">Fakulta {{student?.fakulta}}</li>
-            <li class="list-group-item">Katedra{{student?.katedra}}</li>
+            <li class="list-group-item">Fakulta {{student?.fakultanaz}}</li>
+            <li class="list-group-item">Katedra{{student?.katedranaz}}</li>
             <li class="list-group-item">Odbor {{student?.odbor}} </li>
           </ul>
           <div class="card-body">

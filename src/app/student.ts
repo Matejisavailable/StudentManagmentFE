@@ -5,4 +5,6 @@ export interface Student{
   mail: string;
   mesto: string;
   odbor: string;
+  katedranaz: string;
+  fakultanaz: string;
 }
