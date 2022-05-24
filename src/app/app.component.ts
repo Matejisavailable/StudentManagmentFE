@@ -41,8 +41,8 @@ export class AppComponent implements OnInit{
       alert(error.message));
   }
 
-  public getOdbory():void{
-    this.odborService.getOdbory().subscribe(
+  public getOdbors():void{
+    this.odborService.getOdbors().subscribe(
       (restponse: Odbor[]) => {
         this.odbory = restponse;
       },

@@ -10,7 +10,7 @@ import {environment} from "../environments/environment";
 export class OdborService {
   private API_URL = environment.URL;
   constructor(private http: HttpClient) { }
-  public getOdbory(): Observable<Odbor[]> {
-    return this.http.get<any>(`${this.API_URL}/fakulta/everyone`);
+  public getOdbors(): Observable<Odbor[]> {
+    return this.http.get<any>(`${this.API_URL}/odbor/all`);
   }
 }
