@@ -66,10 +66,10 @@
                 <input type="text" ngModel name="priezvisko" class="form-control" id="priezvisko" placeholder="Surname" required>
               </div>
               <div class="form-group">
-                <label for="typ">Field of study</label>
+                <label for="odbor">Field of study</label>
                 <!--<input type="text" ngModel name="odbor" class="form-control" id="odbor" placeholder="Field of Study" required>-->
-                <select class="form-select" type="text" ngModel name="typ" class="form-control" id="typ" placeholder="Field of Study" required>
-                  <option *ngFor="let odbor of odbory" value="{{odbor?.id}}">{{odbor?.nazov + odbor?.typ}}</option>
+                <select class="form-select" type="text" ngModel name="odbor" class="form-control" id="odbor" placeholder="Field of Study" required>
+                  <option *ngFor="let odbor of odbory" value="{{odbor.id}}">{{odbor.nazov+" "+odbor.typ}}</option>
                 </select>
               </div>
               <div class="form-group">
@@ -92,7 +92,6 @@
                 <button type="button" id="add-student-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Add student</button>
               </div>
-
             </form>
           </div>
         </div>

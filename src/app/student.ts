@@ -10,5 +10,4 @@ export interface Student{
   odborNazov:string;
   rocnik:string;
   odborId:number;
-  typ:string;
 }
