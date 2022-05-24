@@ -9,4 +9,6 @@ export interface Student{
   fakultaNazov: string;
   odborNazov:string;
   rocnik:string;
+  odborId:number;
+  typ:string;
 }
