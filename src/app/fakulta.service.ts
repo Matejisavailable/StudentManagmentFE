@@ -11,6 +11,6 @@ export class FakultaService {
   private API_URL = environment.URL;
   constructor(private http: HttpClient) { }
   public getFakulty(): Observable<Fakulta[]> {
-    return this.http.get<any>(`${this.API_URL}/fakulta/everyone`);
+    return this.http.get<any>(`${this.API_URL}/fakulta/all`);
   }
 }

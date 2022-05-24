@@ -74,11 +74,15 @@
               </div>
               <div class="form-group">
                 <label for="katedranaz">Department</label>
-                <input type="text" ngModel name="katedranaz" class="form-control" id="katedranaz" placeholder="Department" required>
+                <select class="form-select" type="text" ngModel name="katedranaz" class="form-control" id="katedranaz" placeholder="Field of Study" required>
+                  <option *ngFor="let katedra of katedry" value="{{katedra.id}}">{{katedra.nazov}}</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="fakultanaz">Faculty</label>
-                <input type="" ngModel name="fakultanaz" class="form-control" id="fakultanaz" placeholder="Faculty" required>
+                <select class="form-select" type="text" ngModel name="fakultanaz" class="form-control" id="fakultanaz" placeholder="Field of Study" required>
+                  <option *ngFor="let fakulta of fakulty" value="{{fakulta.id}}">{{fakulta.nazov}}</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="rocnik">Year</label>
@@ -119,10 +123,9 @@
               </div>
               <div class="form-group">
                 <label for="mesto">Mesto</label>
-                <input type="text" ngModel="{{updateStudent?.priezvisko}}" name="mesto" class="form-control" id="mestoChange" aria-describedby="emailHelp" placeholder="Surname">
+                <input type="text" ngModel="{{updateStudent?.mesto}}" name="mesto" class="form-control" id="mestoChange" aria-describedby="emailHelp" placeholder="Surname">
               </div>
               <input type="hidden" ngModel="{{updateStudent?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-              <input type="hidden" ngModel="{{updateStudent?.mesto}}" name="mesto2" class="form-control" id="mesto2" placeholder="Email">
               <div class="form-group">
                 <label for="mail">Email</label>
                 <input type="mail" ngModel="{{updateStudent?.mail}}" name="mail" class="form-control" id="mail" placeholder="Email">

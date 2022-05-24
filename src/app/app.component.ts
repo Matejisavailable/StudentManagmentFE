@@ -31,6 +31,8 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.getStudents();
     this.getOdbors();
+    this.getFakulty();
+    this.getKatedry();
   }
 
   public getStudents():void{
