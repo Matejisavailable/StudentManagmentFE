@@ -30,6 +30,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.getStudents();
+    this.getOdbors();
   }
 
   public getStudents():void{
